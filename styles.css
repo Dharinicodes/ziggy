@@ -70,3 +70,19 @@
   padding: 5px;
   margin: 5px;
 }
+
+.res-links,
+.nav-links {
+  text-decoration: none;
+  color: black;
+}
+
+.user-card {
+  border: solid 1px black;
+  width: 22rem;
+  padding: 1rem;
+}
+
+.user-pic {
+  width: 100%;
+}
