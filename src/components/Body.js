@@ -36,37 +36,42 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
-        <input
-          className="search-filter"
-          type="text"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        ></input>
-        <button
-          className="search-btn"
-          onClick={() => {
-            const filteredRes = listOfRestaurants.filter((res) =>
-              res.data.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredRes(filteredRes);
-          }}
-        >
-          Search
-        </button>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRestaurants.filter(
-              (res) => res.data.avgRating > 4
-            );
-            setFilteredRes(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div>
+          <input
+            className="search-filter"
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          ></input>
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filteredRes = listOfRestaurants.filter((res) =>
+                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRes(filteredRes);
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div>
+          <button
+            className="filter-btn"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.data.avgRating > 4
+              );
+              setFilteredRes(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
+
       <div className="res-container">
         {filteredRes.map((restaurant) => (
           <Link

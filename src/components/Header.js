@@ -10,31 +10,24 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+      <div>
+        <img className="company-logo" src={LOGO_URL} />
       </div>
+
       <div className="nav-items">
-        <ul>
+        <ul className="nav-links">
           <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
-            <Link className="nav-links" to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link className="nav-links" to="/about">
-              About Us
-            </Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link className="nav-links" to="/contact">
-              Contact Us
-            </Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <li>
-            <Link className="nav-links" to="/grocery">
-              Grocery
-            </Link>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
           <button

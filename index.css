@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.company-logo {
+  width: 300px;
+}
+
+.nav-items {
+  padding: 0px 20px;
+}
+
+.nav-items > ul {
+  font-size: 17px;
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.res-card {
+  margin: 5px;
+  width: 200px;
+  padding: 10px;
+  background-color: bisque;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.res-logo {
+  width: 100%;
+}
+
+.search-btn {
+  margin-left: 5px;
+}
+
+.filter {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+}
+
+.filter-btn {
+  margin-left: 20px;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 5px;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  background-color: bisque;
+}
+
+.login-btn {
+  padding: 5px;
+  margin: 5px;
+}
+
+.res-links,
+.nav-links {
+  text-decoration: none;
+  color: black;
+}
+
+.user-card {
+  border: solid 1px black;
+  width: 22rem;
+  padding: 1rem;
+}
+
+.user-pic {
+  width: 100%;
+}
