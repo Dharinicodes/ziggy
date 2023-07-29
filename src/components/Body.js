@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { RES_URL } from "../utils/constants";
@@ -12,6 +12,8 @@ const Body = () => {
 
   const [filteredRes, setFilteredRes] = useState([]);
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,9 +23,12 @@ const Body = () => {
 
     const json = await data.json();
 
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-
-    setFilteredRes(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRes(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   const onlineStatus = useOnlineStatus();
@@ -49,7 +54,7 @@ const Body = () => {
             className="search-btn"
             onClick={() => {
               const filteredRes = listOfRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                res?.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRes(filteredRes);
             }}
@@ -62,7 +67,7 @@ const Body = () => {
             className="filter-btn"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
-                (res) => res.data.avgRating > 4
+                (res) => res?.info.avgRating > 4
               );
               setFilteredRes(filteredList);
             }}
@@ -71,18 +76,23 @@ const Body = () => {
           </button>
         </div>
       </div>
-
       <div className="res-container">
         {filteredRes.map((restaurant) => (
           <Link
             className="res-links"
-            key={restaurant.data.id}
-            to={"/restaurants/" + restaurant.data.id}
+            key={restaurant?.info.id}
+            to={"/restaurants/" + restaurant?.info.id}
           >
-            <RestaurantCard resData={restaurant} />{" "}
+            {restaurant?.info.promoted ? (
+              <RestaurantCardPromoted resData={restaurant?.info} /> // FIXME: Promoted label is not getting getting displayed in the card
+            ) : (
+              <RestaurantCard resData={restaurant?.info} />
+            )}{" "}
           </Link>
         ))}
       </div>
+      {/* console.log(
+      <RestaurantCardPromoted />) */}
     </div>
   );
 };

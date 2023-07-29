@@ -10,7 +10,7 @@ const RestaurantCard = (props) => {
     costForTwo,
     deliveryTime,
     avgRating,
-  } = resData?.data;
+  } = resData;
 
   return (
     <div className="res-card">
@@ -21,11 +21,24 @@ const RestaurantCard = (props) => {
       />
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")} </h4>
-      <h4>Rs.{costForTwo / 100} for two</h4>
-      <h4>{deliveryTime} minutes </h4>
+      <h4>Rs.{costForTwo / 100} for two</h4> // FIXME: Cost is not displaying
+      properly on the UI.
+      <h4>{deliveryTime} minutes </h4> // FIXME: Time is not displaying properly
+      on the UI.
       <h4>{avgRating} stars</h4>
     </div>
   );
+};
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="promoted-label">Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
