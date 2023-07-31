@@ -140,11 +140,15 @@
   border-bottom: 1px solid gray;
 }
 
-.accordion-body > p {
+.dish-description {
   font-size: small;
 }
 
-.accordion-body > img {
+.dish-container {
+  width: 75%;
+}
+
+.dish-pic {
   width: 5rem;
   padding: 0.5rem;
 }
